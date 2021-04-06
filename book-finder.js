@@ -13,7 +13,7 @@ function Gettinghtml(dt){
    if(dt===undefined){error.innerHTML='The book could not be found';}
 
    dt.map((rls)=>{
-     console.log(rls);
+    ;
 
      if(rls.volumeInfo.description===undefined)
      {rls.volumeInfo.description=''}
@@ -45,6 +45,8 @@ function Gettinghtml(dt){
    small_container.innerHTML=result
 }
 
+const apikey='AIzaSyBhW0wCV_uKq_roFuU_B2-kX6xdCJw2-54';
+
 SearchIcon.addEventListener('click',function(){
   search_input.classList.add('moveitTotop');
   container.classList.add('changingstyle');
@@ -53,7 +55,7 @@ SearchIcon.addEventListener('click',function(){
   
   
   const inp=document.querySelector('input').value;
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${inp}&key=AIzaSyBhW0wCV_uKq_roFuU_B2-kX6xdCJw2-54`)
-  .then(response => response.json()).then(data => {console.log(data.items); Gettinghtml(data.items)})
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${inp}&key=${apikey}`)
+  .then(response => response.json()).then(data => {Gettinghtml(data.items)})
 
 })
